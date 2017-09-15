@@ -957,8 +957,8 @@ function sendCorsResponse(res, data)
   res.end(""+data);
 }
 
-app.set('port', process.env.OPENSHIFT_NODEJS_PORT || 3000);
-app.set('ip', process.env.OPENSHIFT_NODEJS_IP || '192.168.0.102'); //
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
 
 server.listen(app.get('port'), app.get('ip'), function(){
   logger.debug('VAPL MIDDLEWARE Express server v0.0.1 listening at ' +app.get('ip')+':'+ app.get('port'));
