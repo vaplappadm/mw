@@ -20,7 +20,7 @@ const translate = require('google-translate-api');
 var server = http.createServer(app);
 app.use(express.static('public'));
 
-var MyCustomer = require('./models/customerschema.js');
+var MyCustomer = require('./models/CustomerSchema.js');
 var MyDemand = require('./models/DemandSchema.js');
 var MyRequest = require('./models/RequestSchema.js');
 var MyPayment = require('./models/PaymentsSchema.js');
