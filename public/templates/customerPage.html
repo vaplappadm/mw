@@ -1,0 +1,23 @@
+<div>
+
+<section style="padding:20px;box-sizing:border-box">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+         <th>Customer ID</th>
+         <th>Customer Name</th>
+         <th>Account Balance</th>
+         <th>Phone Number</th>
+         <th>Address</th>
+        </tr>
+        <tr ng-repeat="x in customers.reverse()">
+            <td>{{x.customer_id}}</td>
+            <td>{{x.customer_name}}</td>
+            <td>{{x.customer_walletBalance}}</td>
+            <td>{{x.customer_phone}}</td>
+            <td>{{x.customer_address}}</td>
+        </tr>
+    </thead>
+    </table>
+</section>
+</div>

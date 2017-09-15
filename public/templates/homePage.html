@@ -1,0 +1,40 @@
+<div>
+
+<header class="headerDiv">
+<h1>GAUSIRI</h1>
+<h5> Welcome</h5>
+<h3> {{name}}</h3>
+<logout><img src="../css/images/logout.png" alt="Logout" ng-click="logout()" style="width:50px;height:50px;"></logout>
+
+
+</header>
+
+<section>
+
+    <nav class="navbar navbar-default">
+    <div class="container-fluid">
+
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active"><a ui-sref=".customers"><i class="fa fa-users" fa-lg aria-hidden="true"></i>&nbsp;&nbsp;Customers</a></li>
+        <li ui-sref-active="active"><a ui-sref=".payments"><i class="fa fa-inr" aria-hidden="true"></i>&nbsp;&nbsp; Payments</a></li>
+        <li ui-sref-active="active"><a ui-sref=".demands"> <i class="fa fa-tasks" aria-hidden="true"></i>&nbsp;&nbsp;Demands</a></li>
+        <li ui-sref-active="active"><a ui-sref=".requests"><i class="fa fa-flag" aria-hidden="true"></i> &nbsp;&nbsp;Requests</a></li>
+        <li ui-sref-active="active"><a ui-sref=".messages"><i class="fa fa-inbox" aria-hidden="true"></i> &nbsp;&nbsp;Messages</a></li>
+      </ul>
+    </div>
+  </nav>
+
+
+<div id="main">
+
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ui-view></div>
+
+  </div>
+
+  <header class="footerDiv">
+    <footer>&copy; VAPL GSIRI 2016-17</footer>
+  </header>
+
+</div>

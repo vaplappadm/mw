@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans" />
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+<script type="text/javascript" src="iScroll.js"></script>
+
+<style>
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+html {
+	font-family: "Open Sans";
+	-ms-touch-action: none;
+}
+body {
+
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    opacity: 1.0;
+}
+table
+{
+    margin: 1px 0;
+    width: 100%;
+    background-color: #ACFFFFFF;
+    border-collapse: collapse;
+
+}
+t1 {
+	font-family: "Open Sans";
+	font-size: 40px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bolder;;
+	line-height: 22.4px;
+}
+t2 {
+	font-family: "Open Sans";
+	font-size: 20px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bolder;;
+	line-height: 22.4px;
+	text-align: center;
+}
+t {
+	font-family: "Open Sans";
+	font-size: 15px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;;
+	line-height: 26.4px;
+  margin-left: 14px;
+	color: #111;
+  text-align: center;
+}
+th {
+	font-family: "Open Sans";
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: bold;
+	line-height: 26.4px;
+  text-align: left;
+}
+tr:nth-child(even) {
+    background-color: #EFEFEF;
+}
+tr { line-height: 44px; }
+td {
+  border: 1px solid #EFEFEF;
+}
+#nodata
+{
+	font-size:50px;
+	letter-spacing:0.5em;
+	line-height:1.9em;
+	color:#777;
+	padding:1.1em;
+	margin-top: 6%;
+	text-align: center;
+}
+
+#myImg {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+#play:hover {opacity: 0.7;}
+#pause:hover {opacity: 0.7;}
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.7); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+}
+
+
+/* Add Animation */
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+#header
+{
+	min-height: 120px;
+	background-color:#3498DB;
+	color:white;
+	padding:20px;
+}
+
+</style>
+
+<body>
+
+<div id="container" ng-app="myApp" ng-controller="customersCtrl">
+
+
+<div id="header">
+<div style="text-align:center;margin-top:30px;"><t1 style="text-align:center;">Vasudhaavana Demand Report</t1></div>
+
+
+<div id="wrapper">
+
+</br></br></br>
+<table>
+
+  <th>Sl no</th>
+  <th>Name</th>
+  <th>Date</th>
+  <th>Quantity</th>
+
+  <th>Created at</th>
+
+  <tr ng-repeat="x in names.reverse()">
+    <td><t>{{$index + 1}}</t></td>
+    <td><t>{{ x.customer_kaname }}</t></td>
+    <td><t>{{ x.demand_date }}</t></td>
+    <td><t>{{ x.demand_quantity }}</t></td>
+		
+    <td><t>{{ x.demand_modified_date }}</t></td>
+
+  </tr>
+</table>
+
+</div>
+<div id="nodata">
+No Demands for today</br>
+<t2 style="text-align:center;" >No Data Found</t2>
+</div>
+
+</div>
+
+
+
+</body>
+
+<script>
+var interval = 30; //30 seconds
+document.getElementById("nodata").style.visibility = "hidden";
+
+var app = angular.module('myApp', [])
+    .controller('customersCtrl', function ($scope, $http) {
+    $scope.refreshData = function (data) {
+
+
+				$http.get("http://192.168.43.134:8080/getDemands")
+				.then(function (response)
+				{
+					$scope.names = response.data.response.data;
+					console.log("Response.data "+JSON.stringify(response.data.response.data));
+
+					document.getElementById("nodata").style.visibility = "hidden";
+					if(response.data.length == 0 )
+					{
+						document.getElementById("nodata").style.visibility = "visible";
+					}
+				});
+
+    };
+});
+
+window.onload = function () {
+		refreshData();
+}
+
+function refreshData()
+{
+	angular.element(document.getElementById('container')).scope().refreshData();
+}
+
+</script>
+
+
+<script type="text/javascript">
+var myScroll;
+function loaded () {
+	myScroll = new IScroll('#wrapper', { scrollX: true, freeScroll: true });
+}
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+
+var myVar;
+
+function myTimer(duration) {
+    document.getElementById("timer").innerHTML = "Page refreshes in "+duration+" seconds";
+		if(duration == 0)
+		{
+			 //stopTimerFunction();
+			 //refreshData();
+		}
+}
+
+function stopTimerFunction() {
+    clearInterval(myVar);
+		document.getElementById("timer").innerHTML = "";
+
+}
+
+function startTimer(duration) {
+	  myVar = setInterval(function(){ myTimer(duration--) }, 1000);
+
+
+}
+
+</script>
+
+</html>

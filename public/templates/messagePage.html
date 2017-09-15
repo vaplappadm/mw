@@ -1,0 +1,23 @@
+<div style="margin-left:20%;margin-top:4%;width:40%;display:inline;text-align:center;">
+
+  <div style="float:left;width:40%;margin-left:10%;margin-top:4%;">
+  <md-input-container class="md-block">
+    <label>Enter the message</label>
+    <textarea ng-model="user.message" md-maxlength="60" rows="3" md-select-on-focus></textarea>
+  </md-input-container>
+
+  <button type="button" style="" class="btn btn-primary"><b>Send SMS</b></button>
+  </div>
+
+  <div style="float:left;width:40%;margin-right:10%;margin-top:0%;">
+    <md-list ng-cloak>
+      <md-subheader class="md-no-sticky">Select Customers </md-subheader>
+      <md-list-item ng-repeat="customer in customers">
+        <p style="text-align:left;"> {{ customer.customer_name }} </p>
+        <md-checkbox class="md-secondary" ng-model="customer.id"></md-checkbox>
+        <md-divider></md-divider>
+      </md-list-item>
+  </md-list>
+  </div>
+
+</div>

@@ -1,0 +1,36 @@
+[{
+    "customer_id": "1",
+    "customer_name": "Shruthi",
+    "customer_phone": "9740406587",
+    "customer_address": "Kodigehalli"
+
+},
+{
+    "customer_id": "2",
+    "customer_name": "Rekha",
+    "customer_phone": "8907547389",
+    "customer_address": "Kundanahalli"
+
+},
+{
+    "customer_id": "3",
+    "customer_name": "Rajat",
+    "customer_phone": "1234567865",
+    "customer_address": "Marathalli"
+
+},
+{
+    "customer_id": "4",
+    "customer_name": "Harika",
+    "customer_phone": "9740234533",
+    "customer_address": "Hyderabad"
+
+},
+{
+    "customer_id": "5",
+    "customer_name": "Virat",
+    "customer_phone": "2453678654",
+    "customer_address": "Kodigehalli"
+
+}
+]

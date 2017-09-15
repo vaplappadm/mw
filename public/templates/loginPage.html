@@ -1,0 +1,39 @@
+<div class="row login">
+
+<div class="col-sm-6 col-md-6"></div>
+
+<div class="col-sm-2 col-md-2"></div>
+<div class="col-sm-3 col-md-3">
+<form id="logindiv" style="background:#FFF;">
+
+
+    <div  style="width:100%;">
+      <h6 style="text-align:center;color:#777;">Welcome back</h6>
+      <h2 id="loginHeader" style="text-align:center;margin-top:3%;">Login</h2>
+      <br>
+      <br>
+    <md-content style="padding-left:20%;padding-top:5%;" layout-gt-sm="row" layout-padding>
+    <div>
+      <md-input-container class="md-block" flex-gt-sm>
+       <label>Username</label>
+       <input ng-model="user.name">
+      </md-input-container>
+      </br></br>
+      <md-input-container class="md-block" flex-gt-sm>
+       <label>Password</label>
+       <input ng-model="user.password" type="password">
+     </md-input-container>
+    </div>
+
+  </md-content>
+  <button type="submit" style="margin-left:30%;margin-bottom:10px;" class="btn btn-success" ng-click="getCategory(username)">Login</button>
+</br>
+
+</div>
+
+
+
+
+</div>
+
+</div>

@@ -1,0 +1,20 @@
+{
+    "dependencies": {
+        "aws-sdk": ">= 2.0.9",
+        "node-uuid": ">= 1.4.1",
+        "http": "latest",
+        "log4js": "latest",
+        "express": "latest",
+        "fcm-node": "latest",
+        "cors": "latest",
+        "querystring": "latest",
+        "express-jwt": "latest",
+        "jsonwebtoken": "latest",
+        "fs": "latest",
+        "path": "latest",
+        "body-parser": "latest",
+        "request": "latest",
+        "mongoose": "latest",
+        "google-translate-api": "latest"
+    }
+}
