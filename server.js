@@ -35,7 +35,7 @@ var kannadaname;
 
 //var url = 'mongodb://admin:_Dk74LbBffbF@127.9.2.130:27017/vapl_agri_db';
 	//var url = 'mongodb://127.0.0.1:27017/vapl_agri_db';
-	url = 'mongodb://admin:MongoPass!23@ds129374.mlab.com:29374/vapl_agri_db'
+	var url = 'mongodb://admin:MongoPass!23@ds129374.mlab.com:29374/vapl_agri_db'
 
 app.options('*', cors());
 app.use(cors());
@@ -960,7 +960,7 @@ function sendCorsResponse(res, data)
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000,
     ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
 
-server.listen(app.get('port'), app.get('ip'), function(){
+app.listen(app.get('port'), app.get('ip'), function(){
   logger.debug('VAPL MIDDLEWARE Express server v0.0.1 listening at ' +app.get('ip')+':'+ app.get('port'));
 });
 
