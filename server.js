@@ -54,7 +54,7 @@ app.set('secret', 'thisismysecret');
 }));*/
 
 // Mongoose connection to MongoDB
-mongoose.connect(url, function (error) {
+mongoose.connect(url, {useMongoClient:true} function (error) {
     logger.debug("Connecting to Database - "+ url);
     if (error) {
         console.log(error);
